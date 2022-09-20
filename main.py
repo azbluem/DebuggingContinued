@@ -15,7 +15,9 @@ def init_stage(stage):
 # 4. Any dead cell with 3 neighbors comes alive
 
 def one_generation(stage):
-    new_board=[[2,2,2],[2,2,2],[2,2,2]]
+    new_board=[]
+    for i in range(height):
+        new_board.append([False]*width)
     for v_pos in range(len(stage)):
         for h_pos in range(len(stage[v_pos])):
             neighbors = count_neighbors(stage, v_pos, h_pos)
