@@ -17,7 +17,7 @@ def init_stage(stage):
 def one_generation(stage):
     new_board=[]
     for i in range(height):
-        new_board.append([False]*width)
+        new_board.append(stage[i].copy())
     for v_pos in range(len(stage)):
         for h_pos in range(len(stage[v_pos])):
             neighbors = count_neighbors(stage, v_pos, h_pos)
@@ -29,13 +29,13 @@ def one_generation(stage):
                 new_board[v_pos][h_pos] = True
             else: #stage[v_pos][h_pos] and neighbors > 3:
                 new_board[v_pos][h_pos] = False
-    stage=new_board
-    return new_board
-                
+    for v_pos in range(len(stage)):
+      for h_pos in range(len(stage[v_pos])):
+        stage[v_pos][h_pos]=new_board[v_pos][h_pos]
 
 init_stage(stage)
 game_range=["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh"]
 for gen in range (len(game_range)):
     print(f"{game_range[gen]} Generation:")
     print_stage(stage)
-    stage = one_generation(stage)
+    one_generation(stage)
