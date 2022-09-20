@@ -34,11 +34,8 @@ def one_generation(stage):
                 
 
 init_stage(stage)
-print("First Generation:")
-print_stage(stage)
-stage = one_generation(stage)
-print("Second Generation:")
-print_stage(stage)
-stage = one_generation(stage)
-print("Third Generation:")
-print_stage(stage)
+game_range=["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh"]
+for gen in range (len(game_range)):
+    print(f"{game_range[gen]} Generation:")
+    print_stage(stage)
+    stage = one_generation(stage)
